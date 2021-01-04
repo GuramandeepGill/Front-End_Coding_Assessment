@@ -8,6 +8,7 @@ const calculateAverage = grades => {
 
 const buildStudentProfile = student => {
    let profileDiv = document.createElement('div');
+   profileDiv.className = 'profile';
    profileDiv.innerHTML = `
       <img src='${student.pic}' alt='${student.firstName} ${student.lastName}'>
       <h1>${student.firstName} ${student.lastName}</h1>
@@ -36,6 +37,5 @@ const main = () => {
          displaystudents(students);
          console.log(students);
       });
-   // console.log('hi');
 }
 window.onload = main;
