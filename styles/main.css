@@ -30,3 +30,7 @@ img {
    border: 1px solid lightgray;
    border-radius: 50%;
 }
+
+h1 {
+   margin: 0 0 5px 0;
+}
