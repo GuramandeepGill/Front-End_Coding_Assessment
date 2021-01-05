@@ -17,3 +17,11 @@ body {
    border-radius: 10px;
    box-shadow: 5px 5px 10px gray;
 }
+
+.profile {
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-around;
+   padding: 10px 0 10px 0;
+   border-bottom: 1px solid lightgray;
+}
