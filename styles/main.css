@@ -62,6 +62,11 @@ p {
    border-bottom: 1px solid lightgray;
 }
 
+.tag-input:focus {
+   outline: none;
+   border-bottom: 1px solid black;
+}
+
 ul {
    margin: 0 0 0 10px;
    padding: 0;
