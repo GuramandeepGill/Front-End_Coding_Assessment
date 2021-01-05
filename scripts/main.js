@@ -17,6 +17,22 @@ const buildGrades = grades => {
 }
 
 const buildStudentProfile = student => {
+   let ul = document.createElement('ul');
+   ul.className = 'tags';
+
+   let input = document.createElement('input');
+   input.className = 'tag-input';
+   input.type = 'text';
+   input.placeholder = 'Add a tag';
+   input.onkeyup = function(event) {
+      if(event.key === 'Enter') {
+         let li = document.createElement('li');
+         li.textContent = this.value;
+         ul.append(li);
+         this.value = '';
+      }
+   }
+
    let infoDiv = document.createElement('div');
    infoDiv.className = 'info';
    infoDiv.innerHTML = `
@@ -26,6 +42,8 @@ const buildStudentProfile = student => {
       <p>Skill: ${student.skill}</p>
       <p>Average: ${calculateAverage(student.grades)}</p>
    `;
+   infoDiv.append(ul);
+   infoDiv.append(input);
 
    let button = document.createElement('button');
    button.textContent = '+';
