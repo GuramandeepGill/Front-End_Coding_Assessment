@@ -7,16 +7,23 @@ const calculateAverage = grades => {
 }
 
 const buildStudentProfile = student => {
-   let profileDiv = document.createElement('div');
-   profileDiv.className = 'profile';
-   profileDiv.innerHTML = `
-      <img src='${student.pic}' alt='${student.firstName} ${student.lastName}'>
+   let infoDiv = document.createElement('div');
+   infoDiv.className = 'info';
+   infoDiv.innerHTML = `
       <h1>${student.firstName} ${student.lastName}</h1>
       <p>Email: ${student.email}</p>
       <p>Company: ${student.company}</p>
       <p>Skill: ${student.skill}</p>
       <p>Average: ${calculateAverage(student.grades)}</p>
    `;
+
+   let profileDiv = document.createElement('div');
+   profileDiv.className = 'profile';
+   profileDiv.innerHTML = `
+      <img src='${student.pic}' alt='${student.firstName} ${student.lastName}'>
+   `;
+   profileDiv.append(infoDiv);
+   
    return profileDiv;
 }
 
