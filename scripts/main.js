@@ -6,6 +6,16 @@ const calculateAverage = grades => {
    return `${total/grades.length}`;
 }
 
+const buildGrades = grades => {
+   let ul = document.createElement('ul');
+   grades.forEach((grade, i) => {
+      let li = document.createElement('li');
+      li.textContent = `Test ${++i}: ${grade}`;
+      ul.append(li);
+   });
+   return ul;
+}
+
 const buildStudentProfile = student => {
    let infoDiv = document.createElement('div');
    infoDiv.className = 'info';
@@ -17,13 +27,27 @@ const buildStudentProfile = student => {
       <p>Average: ${calculateAverage(student.grades)}</p>
    `;
 
+   let button = document.createElement('button');
+   button.textContent = '+';
+   button.onclick = () => {
+      if(button.textContent === '+') {
+         infoDiv.append(buildGrades(student.grades));
+         button.textContent = '-';
+      }
+      else {
+         infoDiv.removeChild(infoDiv.lastChild);
+         button.textContent = '+';
+      }
+   }
+
    let profileDiv = document.createElement('div');
    profileDiv.className = 'profile';
    profileDiv.innerHTML = `
       <img src='${student.pic}' alt='${student.firstName} ${student.lastName}'>
    `;
    profileDiv.append(infoDiv);
-   
+   profileDiv.append(button);
+
    return profileDiv;
 }
 
