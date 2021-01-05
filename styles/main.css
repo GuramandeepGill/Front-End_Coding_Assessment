@@ -44,6 +44,17 @@ p {
    margin: 0 0 0 10px;
 }
 
+ul {
+   margin: 0 0 0 10px;
+   padding: 0;
+}
+
+li {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
 button {
    font-size: 2em;
    font-weight: bold;
