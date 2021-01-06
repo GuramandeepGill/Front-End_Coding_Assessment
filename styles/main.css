@@ -28,6 +28,11 @@ body {
    border-bottom: 1px solid lightgray;
 }
 
+.search-input:focus {
+   outline: none;
+   border-bottom: 1px solid black;
+}
+
 .profile {
    display: flex;
    align-items: flex-start;
