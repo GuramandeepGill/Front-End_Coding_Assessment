@@ -80,6 +80,15 @@ const displayStudents = students => {
    contentDiv.append(studentProfilesDiv);
 }
 
+const handleSearch = (value, list) => {
+   let newValue = value.toLowerCase();
+   let filteredStudents = list.filter(student => {
+      let name = (`${student.firstName} ${student.lastName}`).toLowerCase();
+      return (name.indexOf(newValue) !== -1);
+   });
+   return filteredStudents;
+}
+
 const main = () => {
    let url = 'https://api.hatchways.io/assessment/students';
    const students = [];
@@ -89,8 +98,8 @@ const main = () => {
       .then(data => {
          (data.students).forEach(student => {
             students.push(student);
-            displayStudent(student);
          });
+         displayStudents(students);
       });
 
    let searchDiv = document.createElement('div');
@@ -101,5 +110,11 @@ const main = () => {
 
    let contentDiv = document.getElementById('content');
    contentDiv.prepend(searchDiv);
+
+   searchDiv.onkeyup = () => {
+      let elements = document.getElementsByClassName('search-input');
+      document.getElementById('student-profiles').remove();
+      displayStudents(handleSearch((elements[0]).value, students));
+   }
 }
 window.onload = main;
