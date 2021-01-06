@@ -82,15 +82,6 @@ const displayStudents = students => {
    contentDiv.append(studentProfilesDiv);
 }
 
-// const handleSearch = (value, list) => {
-//    let newValue = value.toLowerCase();
-//    let filteredStudents = list.filter(student => {
-//       let name = (`${student.firstName} ${student.lastName}`).toLowerCase();
-//       return (name.indexOf(newValue) !== -1);
-//    });
-//    return filteredStudents;
-// }
-
 const handleSearch = (elements, list) => {
    let name = (elements[0].value).toLowerCase();
    let tag = (elements[1].value).toLowerCase();
@@ -98,7 +89,16 @@ const handleSearch = (elements, list) => {
    let filteredStudents = list.filter(student => {
       let studentName = (`${student.firstName} ${student.lastName}`).toLowerCase();
       let flagOne = (studentName.indexOf(name) !== -1);
-      return flagOne;
+      let flagTwo = ((tag === '') ? true : false);
+      let {tags} = student;
+      for(let i=0; i<tags.length; i++) {
+         let ithTag = tags[i].toLowerCase();
+         if(ithTag.indexOf(tag) !== -1) {
+            flagTwo = true;
+            break;
+         }
+      }
+      return (flagOne && flagTwo);
    });
    return filteredStudents;
 }
