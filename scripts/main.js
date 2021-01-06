@@ -93,7 +93,7 @@ const main = () => {
       <input type="text" class="search-input" placeholder='Search by tag'>
    `;
 
-   let body = document.body;
-   body.prepend(searchDiv);
+   let contentDiv = document.getElementById('content');
+   contentDiv.prepend(searchDiv);
 }
 window.onload = main;
