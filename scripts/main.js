@@ -86,5 +86,14 @@ const main = () => {
          displaystudents(students);
          console.log(students);
       });
+
+   let searchDiv = document.createElement('div');
+   searchDiv.innerHTML = `
+      <input type="text" class="search-input" placeholder='Search by name'>
+      <input type="text" class="search-input" placeholder='Search by tag'>
+   `;
+
+   let body = document.body;
+   body.prepend(searchDiv);
 }
 window.onload = main;
