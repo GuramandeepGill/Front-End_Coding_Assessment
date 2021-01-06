@@ -34,6 +34,13 @@ const buildStudentProfile = student => {
       }
    }
 
+   // preserves changes in the DOM when searching students
+   student.tags.forEach(tag => {
+      let li = document.createElement('li');
+      li.textContent = tag;
+      ul.append(li);
+   });
+
    let infoDiv = document.createElement('div');
    infoDiv.className = 'info';
    infoDiv.innerHTML = `
