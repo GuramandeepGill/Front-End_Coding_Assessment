@@ -52,10 +52,12 @@ const buildStudentProfile = student => {
       if(button.textContent === '+') {
          infoDiv.append(buildGrades(student.grades));
          button.textContent = '-';
+         student.revealGrades = true;
       }
       else {
          infoDiv.removeChild(infoDiv.lastChild);
          button.textContent = '+';
+         student.revealGrades = false;
       }
    }
 
