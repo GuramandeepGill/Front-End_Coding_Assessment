@@ -55,18 +55,25 @@ const buildStudentProfile = student => {
 
    let button = document.createElement('button');
    button.textContent = '+';
-   button.onclick = () => {
-      if(button.textContent === '+') {
+
+   const reveal = flag => {
+      if(flag) {
          infoDiv.append(buildGrades(student.grades));
          button.textContent = '-';
-         student.revealGrades = true;
       }
       else {
-         infoDiv.removeChild(infoDiv.lastChild);
-         button.textContent = '+';
-         student.revealGrades = false;
+         if(!infoDiv.lastChild.className) {
+            infoDiv.removeChild(infoDiv.lastChild);
+            button.textContent = '+';
+         }
       }
    }
+
+   button.onclick = () => {
+      student.revealGrades = !student.revealGrades;
+      reveal(student.revealGrades);
+   }
+   reveal(student.revealGrades); // notify DOM when button has not been clicked yet
 
    let profileDiv = document.createElement('div');
    profileDiv.className = 'profile';
@@ -130,14 +137,13 @@ const main = () => {
       <input type="text" class="search-input" placeholder='Search by name'>
       <input type="text" class="search-input" placeholder='Search by tag'>
    `;
-
-   let contentDiv = document.getElementById('content');
-   contentDiv.prepend(searchDiv);
-
    searchDiv.onkeyup = () => {
       let elements = document.getElementsByClassName('search-input');
       document.getElementById('student-profiles').remove();
       displayStudents(handleSearch(elements, students));
    }
+
+   let contentDiv = document.getElementById('content');
+   contentDiv.prepend(searchDiv);
 }
 window.onload = main;
