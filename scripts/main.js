@@ -69,7 +69,7 @@ const buildStudentProfile = student => {
    return profileDiv;
 }
 
-const displaystudents = students => {
+const displayStudents = students => {
    let contentDiv = document.getElementById('content');
    let studentProfilesDiv = document.createElement('div');
    studentProfilesDiv.id = 'student-profiles';
@@ -87,7 +87,7 @@ const main = () => {
       .then(response => response.json())
       .then(data => {
          let {students} = data;
-         displaystudents(students);
+         displayStudents(students);
          console.log(students);
       });
 
