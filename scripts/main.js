@@ -82,11 +82,23 @@ const displayStudents = students => {
    contentDiv.append(studentProfilesDiv);
 }
 
-const handleSearch = (value, list) => {
-   let newValue = value.toLowerCase();
+// const handleSearch = (value, list) => {
+//    let newValue = value.toLowerCase();
+//    let filteredStudents = list.filter(student => {
+//       let name = (`${student.firstName} ${student.lastName}`).toLowerCase();
+//       return (name.indexOf(newValue) !== -1);
+//    });
+//    return filteredStudents;
+// }
+
+const handleSearch = (elements, list) => {
+   let name = (elements[0].value).toLowerCase();
+   let tag = (elements[1].value).toLowerCase();
+
    let filteredStudents = list.filter(student => {
-      let name = (`${student.firstName} ${student.lastName}`).toLowerCase();
-      return (name.indexOf(newValue) !== -1);
+      let studentName = (`${student.firstName} ${student.lastName}`).toLowerCase();
+      let flagOne = (studentName.indexOf(name) !== -1);
+      return flagOne;
    });
    return filteredStudents;
 }
@@ -118,7 +130,7 @@ const main = () => {
    searchDiv.onkeyup = () => {
       let elements = document.getElementsByClassName('search-input');
       document.getElementById('student-profiles').remove();
-      displayStudents(handleSearch((elements[0]).value, students));
+      displayStudents(handleSearch(elements, students));
    }
 }
 window.onload = main;
