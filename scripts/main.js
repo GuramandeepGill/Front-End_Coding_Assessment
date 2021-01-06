@@ -28,6 +28,7 @@ const buildStudentProfile = student => {
       if(event.key === 'Enter') {
          let li = document.createElement('li');
          li.textContent = this.value;
+         student.tags.push(this.value);
          ul.append(li);
          this.value = '';
       }
@@ -74,7 +75,6 @@ const displayStudents = students => {
    let studentProfilesDiv = document.createElement('div');
    studentProfilesDiv.id = 'student-profiles';
    students.forEach(student => {
-      // contentDiv.append(buildStudentProfile(student));
       studentProfilesDiv.append(buildStudentProfile(student));
    });
    contentDiv.append(studentProfilesDiv);
