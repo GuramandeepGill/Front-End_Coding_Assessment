@@ -97,6 +97,8 @@ const main = () => {
       .then(response => response.json())
       .then(data => {
          (data.students).forEach(student => {
+            student.tags = [];
+            student.revealGrades = false;
             students.push(student);
          });
          displayStudents(students);
