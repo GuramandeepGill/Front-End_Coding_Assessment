@@ -89,7 +89,7 @@ const handleSearch = (elements, list) => {
    let filteredStudents = list.filter(student => {
       let studentName = (`${student.firstName} ${student.lastName}`).toLowerCase();
       let flagOne = (studentName.indexOf(name) !== -1);
-      let flagTwo = ((tag === '') ? true : false);
+      let flagTwo = (tag === '') ? true : false;
       let {tags} = student;
       for(let i=0; i<tags.length; i++) {
          let ithTag = tags[i].toLowerCase();
