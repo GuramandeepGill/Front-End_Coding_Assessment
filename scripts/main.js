@@ -71,9 +71,13 @@ const buildStudentProfile = student => {
 
 const displaystudents = students => {
    let contentDiv = document.getElementById('content');
+   let studentProfilesDiv = document.createElement('div');
+   studentProfilesDiv.id = 'student-profiles';
    students.forEach(student => {
-      contentDiv.append(buildStudentProfile(student));
+      // contentDiv.append(buildStudentProfile(student));
+      studentProfilesDiv.append(buildStudentProfile(student));
    });
+   contentDiv.append(studentProfilesDiv);
 }
 
 const main = () => {
